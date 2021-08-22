@@ -1,0 +1,16 @@
+enp0s9:
+  netplan.create:
+    - filename: "10 - teste4.yaml"
+    - macaddress: "08:00:27:6A:7F:48"
+    - addresses: 192.168.100.106/24, "2001:1::1/64"
+    - gateway4: 192.168.100.1
+    - gateway6: fe80::5054:ff:fe5d:d3cf
+    - nameservers:
+      - 192.138.25.35
+      - 200.160.3.3
+
+enp0s10:
+  netplan.create:
+    - filename: "10-enp0s10.yaml"
+    - macaddress: "08:00:27:6A:7F:48"
+    - dhcp4: True
