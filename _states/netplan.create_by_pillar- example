@@ -1,6 +1,6 @@
 # cat /srv/salt/stateb/init.sls 
 conf_network:
-  netplan_pillar.create
+  netplan.create_by_pillar
 
 
 # Pillar:
