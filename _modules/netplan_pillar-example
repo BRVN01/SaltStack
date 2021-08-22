@@ -1,0 +1,14 @@
+# cat /srv/salt/stateb/init.sls 
+conf_network:
+  netplan_pillar.create
+
+
+# Pillar:
+web_servers:
+  zeus:
+    interface: enp1s0
+    gateway4: 192.168.3.140
+    addresses: 192.168.3.145/25
+    macaddress: 58:dd:ff:gg:hh:aa
+    nameservers: 8.8.8.8, 8.8.4.4, 1.1.1.1
+    filename: 59-teste.yaml
