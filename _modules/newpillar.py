@@ -1,3 +1,6 @@
+# salt '*' saltutil.sync_all
+# salt '*' newpillar.items
+# 
 import salt.utils.json
 import salt.pillar
 import salt.utils.crypt
