@@ -52,7 +52,7 @@ def create(*args, **kwargs):
     key_pillar = key_pillar.replace("'", "")
 
     dict_keys = dict_pillar[key_pillar][__opts__["id"]]
-    Values = dict_pillar[key_pillar][__opts__["id"]]
+    name = dict_pillar[key_pillar][__opts__["id"]]
 
     if "interface" not in dict_keys.keys():
         dict_keys["interface"] = "enpXXX"
@@ -68,7 +68,8 @@ def create(*args, **kwargs):
 
     if "addresses" not in dict_keys.keys():
         ret = {
-            "Values": Values,
+            "name": name,
+            "changes": {},
             "result": False,
             "comment": "Address IP empty",
         }
@@ -77,7 +78,8 @@ def create(*args, **kwargs):
     if "gateway4" not in dict_keys.keys():
         if dict_keys["ipv4"] is True:
             ret = {
-                "Values": Values,
+                "name": name,
+                "changes": {},
                 "result": False,
                 "comment": "Gateway4 empty",
             }
@@ -88,7 +90,8 @@ def create(*args, **kwargs):
     if "gateway6" not in dict_keys.keys():
         if dict_keys["ipv6"] is True:
             ret = {
-                "Values": Values,
+                "name": name,
+                "changes": {},
                 "result": False,
                 "comment": "Gateway6 empty",
             }
@@ -167,10 +170,12 @@ def create(*args, **kwargs):
 
     if os.path.exists(dict_keys["filename"]):
         ret = {
-            "Values": Values,
+            "name": name,
+            "changes": {},
             "result": True,
             "comment": "{} has been created".format(dict_keys["filename"]),
         }
 
     return ret
 #    return netplan_file
+
