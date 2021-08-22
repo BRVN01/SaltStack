@@ -1,3 +1,5 @@
+# sudo salt 'image' state.apply stateb
+
 enp0s9:
   netplan.create_by_state:
     - filename: "10-teste4.yaml"
