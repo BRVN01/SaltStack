@@ -26,7 +26,7 @@ def create_by_state(
                 "name": name,
                 "changes": {},
                 "result": False,
-                "comment": "DHCP4 and gateway4 is not set up",
+                "comment": "DHCP4 and gateway4 is set up",
             }
             return ret
 
@@ -39,7 +39,7 @@ def create_by_state(
                 "name": name,
                 "changes": {},
                 "result": False,
-                "comment": "DHCP6 and gateway6 is not set up",
+                "comment": "DHCP6 and gateway6 is set up",
             }
             return ret
 
