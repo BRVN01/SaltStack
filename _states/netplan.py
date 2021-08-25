@@ -185,18 +185,27 @@ def create_by_pillar(*args, **kwargs):
     dict_keys = dict_pillar[key_pillar][__opts__["id"]]
     name = dict_pillar[key_pillar][__opts__["id"]]
 
-    if "interface" not in dict_keys.keys():
-        dict_keys["interface"] = "enpXXX"
+#    if "interface" not in dict_keys.keys():
+#        dict_keys["interface"] = "enpXXX"
 
-    if "macaddress" not in dict_keys.keys():
-        dict_keys["macaddress"] = "None"
+#    if "macaddress" not in dict_keys.keys():
+#        dict_keys["macaddress"] = "None"
 
-    if "ipv6" not in dict_keys.keys():
-        dict_keys["ipv6"] = "False"
+#    if "ipv6" not in dict_keys.keys():
+#        dict_keys["ipv6"] = "False"
 
-    if "ipv4" not in dict_keys.keys():
-        dict_keys["ipv4"] = "False"
+#    if "ipv4" not in dict_keys.keys():
+#       #dict_keys["ipv4"] = "False"
 
+        
+    dict_keys.setdefault('interface', 'enpXXX')
+    dict_keys.setdefault('macaddress', 'None')
+    dict_keys.setdefault('ipv6', 'False')
+    dict_keys.setdefault('ipv4', 'False') 
+    dict_keys.setdefault["dhcp4"] = "False"
+    dict_keys.setdefault["dhcp6"] = "False"
+    dict_keys.setdefault["acceptra"] = "false"
+        
     if "addresses" not in dict_keys.keys():
         ret = {
             "name": name,
@@ -230,12 +239,6 @@ def create_by_pillar(*args, **kwargs):
         else:
             dict_keys["gateway6"] = None
 
-    if "dhcp4" not in dict_keys.keys():
-        dict_keys["dhcp4"] = "False"
-
-    if "dhcp6" not in dict_keys.keys():
-        dict_keys["dhcp6"] = "False"
-
     if "filename" in dict_keys.keys():
        dict_keys["filename"] = '/etc/netplan/' + dict_keys["filename"]
 
@@ -250,9 +253,6 @@ def create_by_pillar(*args, **kwargs):
         dict_keys["nameservers"] = '- ' + dict_keys["nameservers"]
     else:
         dict_keys["nameservers"] = None
-
-    if "acceptra" not in dict_keys.keys():
-       dict_keys["acceptra"] = "false"
 
     netplan_file = """network:
         version: 2
