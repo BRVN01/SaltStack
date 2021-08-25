@@ -194,15 +194,19 @@ def create_by_pillar(*args, **kwargs):
         
     if "addresses" not in dict_keys.keys():
         ret = {
-            "name": dict_keys,
-            "changes": {},
-            "result": False,
-            "comment": "Address IP empty",
+                "name": dict_keys,
+                "changes": {},
+                "result": False,
+                "comment": "Address IP empty",
         }
-        return ret
+        if not dict_keys.["dhcp4"]:
+                return ret
+
+        if not dict_keys.["dhcp6"]:
+                return ret
 
     if "gateway4" not in dict_keys.keys():
-        if dict_keys["ipv4"] is True:
+        if dict_keys["ipv4"]:
             ret = {
                 "name": dict_keys,
                 "changes": {},
@@ -214,7 +218,7 @@ def create_by_pillar(*args, **kwargs):
             dict_keys["gateway4"] = None
 
     if "gateway6" not in dict_keys.keys():
-        if dict_keys["ipv6"] is True:
+        if dict_keys["ipv6"]:
             ret = {
                 "name": dict_keys,
                 "changes": {},
